@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -23,16 +24,22 @@ export class LoginPage implements OnInit {
   inputBorderLock: any;
  
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
     this.email = "";
     this.password = "";
     this.liberaBotao();
   }
+
   logar(){
-    this.liberaBotao();
+    if(this.liberaBotao()){
+      this.irHome();
+    } else {
+      this.presentToast("Usuário ou senha incorretos");
+    }
   }
+
   liberaBotao()
   {
     this.progressBarValue = 0;
@@ -47,15 +54,30 @@ export class LoginPage implements OnInit {
       this.iconPersonColor = "warning";
       this.progressBarValue += 0.5;
     }
+
     if(this.password.length > 2){
       this.progressBarValue += 0.5;
       this.iconLockColor = "warning";
     }
-
     if(this.progressBarValue == 1){
        this.progressColor = 'warning';
        this.loginIconColor = 'warning';
        this.loginIcon = "sunny"
-    }
+       return true;
+      }
+    return false; 
+  }
+
+  irHome(){
+    this.router.navigate(['/actionsheet']);
+  }
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: "danger",
+      position: "top"
+    });
+    toast.present();
   }
 }
