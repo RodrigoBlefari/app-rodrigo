@@ -11,11 +11,19 @@
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item color="dark" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon color="warning" slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
+              <ion-label color="warning">
                 {{p.title}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+              <ion-item color="dark" [routerDirection]="'root'" [routerLink]="['log-out']">
+                <ion-icon color="danger" slot="start" name="log-out"></ion-icon>
+                <ion-label>
+                  LogOut
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>

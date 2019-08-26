@@ -16,11 +16,6 @@ export class AppComponent {
       url: '/actionsheet',
       icon: 'paper'
     },
-    {
-      title: 'Login',
-      url: '/login',
-      icon: 'log-in'
-    }
   ];
 
   constructor(

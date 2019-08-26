@@ -1,0 +1,26 @@
+<ion-content>
+  <img src="/assets/site-ionic/uicomponents/action-sheet/ion-action-sheet-before-code.png" alt="" />
+<!-- Scrollable Segment -->
+<ion-segment color="dark" scrollable (ionChange)="segmentChanged($event)">
+    <ion-segment-button checked value='angular'>
+      <ion-icon [color]="codetype == 'angular'? 'warning':''" name="logo-angular"></ion-icon>
+      <ion-label [color]="codetype == 'angular'? 'warning':''" >Angular</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value='javascript'>
+      <ion-icon [color]="codetype == 'javascript'? 'warning':''" name="logo-javascript"></ion-icon>
+      <ion-label [color]="codetype == 'javascript'? 'warning':''" >Javascript</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value='react'>
+      <ion-icon [color]="codetype == 'react'? 'warning':''" name="cog"></ion-icon>
+      <ion-label [color]="codetype == 'react'? 'warning':''" >React</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value='vue'>
+      <ion-icon [color]="codetype == 'vue'? 'warning':''" name="pizza"></ion-icon>
+      <ion-label [color]="codetype == 'vue'? 'warning':''" >Vue</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <img src="/assets/site-ionic/uicomponents/action-sheet/ion-action-sheet-code-{{codetype}}.png" alt="" />
+
+  <img src="/assets/site-ionic/uicomponents/action-sheet/ion-action-sheet-after-code.png" alt="" />
+</ion-content>

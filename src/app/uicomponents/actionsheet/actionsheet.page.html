@@ -3,13 +3,66 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title color="warning">
       Action Sheet
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
+  <app-ion-action-sheet
+    *ngIf="componente == 'app-ion-action-sheet'"
+  ></app-ion-action-sheet>
+  <app-ion-action-sheet-controller
+    *ngIf="componente == 'app-ion-action-sheet-controller'"
+  ></app-ion-action-sheet-controller>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon (click)="presentActionSheet()" color="warning" name="finger-print"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+
 <ion-footer>
-    <ion-button (click)="presentActionSheet()" expand="full" fill="outline">Open Action Sheet exemple</ion-button>
+  <ion-tabs>
+    <ion-tab-bar color="dark" slot="bottom">
+      <ion-tab-button
+        (click)="changePage('app-ion-action-sheet')"
+        layout="icon-top"
+        color="warning"
+      >
+        <ion-icon
+          size="large"
+          layout="icon-top"
+          [color]="componente == 'app-ion-action-sheet' ? 'warning' : 'light'"
+          name="logo-ionic"
+        ></ion-icon>
+        <ion-label
+          [color]="componente == 'app-ion-action-sheet' ? 'warning' : 'light'"
+          >About</ion-label
+        >
+      </ion-tab-button>
+      <ion-tab-button
+        (click)="changePage('app-ion-action-sheet-controller')"
+      >
+        <ion-icon
+          name="logo-game-controller-b"
+          [color]="
+            componente == 'app-ion-action-sheet-controller'
+              ? 'warning'
+              : 'light'
+          "
+        ></ion-icon>
+        <ion-label
+          [color]="
+            componente == 'app-ion-action-sheet-controller'
+              ? 'warning'
+              : 'light'
+          "
+          >Controller</ion-label
+        >
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-footer>
